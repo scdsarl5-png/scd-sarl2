@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCD SARL - Société de Construction et Développement</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1a365d;
+            --dark-blue: #0d2438;
+            --medium-blue: #2c5282;
+            --light-blue: #4299e1;
+            --accent-orange: #ed8936;
+            --dark-orange: #dd6b20;
+            --light-gray: #f7fafc;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #4a5568;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background-color: var(--accent-orange);
+            border-radius: 2px;
+        }
+
+        .text-center h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-light {
+            background-color: var(--light-gray);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-blue);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--accent-orange);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--dark-orange);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-visual {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            line-height: 1;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-subtitle {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.75rem;
+            color: var(--dark-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 3px;
+        }
+
+        .logo-sarl {
+            color: var(--accent-orange);
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-blue);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-orange);
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-orange);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 54, 93, 0.85), rgba(26, 54, 93, 0.9)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 180px 0 100px;
+            margin-top: 90px;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-img img:hover {
+            transform: scale(1.03);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            padding: 35px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--accent-orange);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-icon {
+            height: 80px;
+            background-color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2.2rem;
+        }
+
+        .service-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+        }
+
+        .service-content p {
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+
+        .service-link {
+            color: var(--accent-orange);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .service-link i {
+            margin-left: 8px;
+            transition: var(--transition);
+        }
+
+        .service-link:hover {
+            color: var(--dark-orange);
+        }
+
+        .service-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Realizations Section */
+        .realizations-container {
+            margin-top: 50px;
+        }
+
+        .realization-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background-color: var(--white);
+            border: 2px solid var(--medium-gray);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        .realizations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .realization-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            height: 280px;
+        }
+
+        .realization-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .realization-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(26, 54, 93, 0.85), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            color: var(--white);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .realization-item:hover .realization-overlay {
+            opacity: 1;
+        }
+
+        .realization-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .realization-category {
+            display: inline-block;
+            background-color: var(--accent-orange);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            align-self: flex-start;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            margin-top: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            margin-bottom: 8px;
+            color: var(--primary-blue);
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--medium-gray);
+            border-radius: var(--border-radius);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 70px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo .logo-main {
+            color: var(--white);
+        }
+
+        .footer-logo .logo-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+        }
+
+        .footer-links h3, .footer-services h3, .footer-contact h3 {
+            color: var(--white);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h3:after, .footer-services h3:after, .footer-contact h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-orange);
+        }
+
+        .footer-links ul, .footer-services ul {
+            list-style: none;
+        }
+
+        .footer-links ul li, .footer-services ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links ul li a, .footer-services ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links ul li a:hover, .footer-services ul li a:hover {
+            color: var(--accent-orange);
+            transform: translateX(5px);
+        }
+
+        .footer-contact .contact-item {
+            margin-bottom: 25px;
+        }
+
+        .footer-contact .contact-icon {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent-orange);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.3rem;
+            }
+            
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-img {
+                order: -1;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 12px 0;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 90px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 20px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+                margin-top: 90px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+            
+            .contact-form {
+                padding: 30px 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo-visual {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .logo-main {
+                font-size: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.9rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.95rem;
+            }
+            
+            .realizations-grid, .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation for scroll reveal */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo-container">
+                <div class="logo-visual">SCD</div>
+                <div class="logo-text">
+                    <div class="logo-main">SCD</div>
+                    <div class="logo-subtitle">SOCIETE DE CONSTRUCTION ET DEVELOPPEMENT <span class="logo-sarl">Sarl</span></div>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#apropos">À Propos</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#realisations">Réalisations</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="container">
+            <h1 class="fade-in">Construire l'avenir de la RDC</h1>
+            <p class="fade-in">Société de Construction et de Développement SCD SARL - Entreprise leader en génie civil, construction et développement d'infrastructures durables en République Démocratique du Congo.</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-secondary fade-in">Nos Services</a>
+                <a href="#contact" class="btn btn-outline fade-in">Contactez-nous</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="apropos" class="section-light">
+        <div class="container">
+            <div class="text-center">
+                <h2>À Propos de SCD SARL</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p>La <strong>SOCIETE DE CONSTRUCTION ET DE DEVELOPPEMENT SARL</strong> est enregistrée en RDC parmi les firmes de petites et moyennes entreprises (PME), et identifiée sous le registre de commerce: <strong>N°CD/GOM/RCC/22-B-01310</strong>.</p>
+                    <p>Créée en 2021 avec la motivation passionnée de ses fondateurs, SCD SARL a pour vision de œuvrer dans la reconstruction des infrastructures et l'amélioration de l'habitat durable en RDC en général et en particulier pour les provinces du Nord et Sud Kivu.</p>
+                    <p>Notre entreprise offre des services de qualité et des produits bien finis, fiables et durables grâce à nos experts et techniciens qualifiés.</p>
+                    <a href="#contact" class="btn btn-primary" style="margin-top: 20px;">Nous Contacter</a>
+                </div>
+                <div class="about-img fade-in">
+                    <img src="https://images.unsplash.com/photo-1503387769-00a112127ca0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Chantier de construction SCD SARL">
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card fade-in">
+                    <i class="fas fa-eye"></i>
+                    <h3>Notre Vision</h3>
+                    <p>Œuvrer dans la reconstruction des infrastructures et l'amélioration de l'habitat durable en RDC, former en entrepreneuriat, promouvoir l'immobilier écologique, créer des industries de fabrication de matériaux de construction, et offrir des emplois.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Notre Mission</h3>
+                    <p>Fournir des services d'exécution, d'expertise, de conception architecturale ainsi que de la supervision de tout projet de construction avec qualité, fiabilité et durabilité pour contribuer au développement des infrastructures en RDC.</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <i class="fas fa-values"></i>
+                    <h3>Nos Valeurs</h3>
+                    <p>Intégrité, professionnalisme, innovation et engagement envers l'excellence. Nous croyons en la construction responsable et durable qui respecte l'environnement et améliore la qualité de vie des communautés que nous servons.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="text-center">
+                <h2>Nos Services</h2>
+            </div>
+            <p class="text-center fade-in" style="text-align: center; max-width: 800px; margin: 0 auto 30px;">SCD SARL offre une gamme complète de services dans le domaine de la construction et du développement d'infrastructures en RDC.</p>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Génie Civil & Bâtiment</h3>
+                        <p>Élaboration, conception et exécution des projets de génie civil : bâtiments résidentiels et commerciaux, immeubles, villas, et toutes constructions en béton armé.</p>
+                        <a href="#contact" class="service-link">Demander un devis <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-road"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Infrastructures Routières</h3>
+                        <p>Construction, réhabilitation et entretien de routes, ponts, ouvrages d'art, caniveaux et tous travaux d'infrastructure de transport terrestre.</p>
+                        <a href="#contact" class="service-link">Demander un devis <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Travaux Hydrauliques</h3>
+                        <p>Adduction d'eau potable, systèmes d'irrigation, drainage, traitement des eaux et tous travaux hydrauliques pour les collectivités et les industries.</p>
+                        <a href="#contact" class="service-link">Demander un devis <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-truck-loading"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Transport & Logistique</h3>
+                        <p>Services de transport terrestre, aérien et lacustre ainsi que solutions logistiques complètes pour vos chantiers et activités en RDC et dans la région.</p>
+                        <a href="#contact" class="service-link">Demander un devis <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Expertise & Conseil</h3>
+                        <p>Expertise immobilière, études techniques, conception architecturale, supervision de projets et consultations techniques spécialisées.</p>
+                        <a href="#contact" class="service-link">Demander un devis <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Fournitures & Matériaux</h3>
+                        <p>Vente et fourniture de matériels et matériaux de construction de qualité : ciment, fer à béton, bois, équipements et outils de construction.</p>
+                        <a href="#contact" class="service-link">Demander un devis <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Realizations Section -->
+    <section id="realisations" class="section-light">
+        <div class="container">
+            <div class="text-center">
+                <h2>Nos Réalisations</h2>
+            </div>
+            <p class="text-center fade-in" style="text-align: center; max-width: 800px; margin: 0 auto 30px;">Découvrez quelques-uns de nos projets récents dans le domaine de la construction et du développement d'infrastructures en RDC.</p>
+            
+            <div class="realizations-container">
+                <div class="realization-filter fade-in">
+                    <button class="filter-btn active" data-filter="all">Tous les projets</button>
+                    <button class="filter-btn" data-filter="batiment">Bâtiments</button>
+                    <button class="filter-btn" data-filter="route">Routes & Ponts</button>
+                    <button class="filter-btn" data-filter="hydraulique">Travaux Hydrauliques</button>
+                    <button class="filter-btn" data-filter="autres">Autres réalisations</button>
+                </div>
+                
+                <div class="realizations-grid">
+                    <div class="realization-item fade-in" data-category="batiment">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Projet de bâtiment">
+                        <div class="realization-overlay">
+                            <span class="realization-category">Bâtiment</span>
+                            <h3>Immeuble Résidentiel</h3>
+                            <p>Construction d'un immeuble de 4 étages à Goma</p>
+                        </div>
+                    </div>
+                    
+                    <div class="realization-item fade-in" data-category="route">
+                        <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Construction de route">
+                        <div class="realization-overlay">
+                            <span class="realization-category">Route</span>
+                            <h3>Route Urbaine</h3>
+                            <p>Réhabilitation d'une route principale à Bukavu</p>
+                        </div>
+                    </div>
+                    
+                    <div class="realization-item fade-in" data-category="route">
+                        <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Construction de pont">
+                        <div class="realization-overlay">
+                            <span class="realization-category">Pont</span>
+                            <h3>Pont en Béton</h3>
+                            <p>Construction d'un pont sur une rivière à Nord Kivu</p>
+                        </div>
+                    </div>
+                    
+                    <div class="realization-item fade-in" data-category="hydraulique">
+                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Adduction d'eau">
+                        <div class="realization-overlay">
+                            <span class="realization-category">Hydraulique</span>
+                            <h3>Adduction d'Eau Potable</h3>
+                            <p>Système d'adduction d'eau pour un village à Nord Kivu</p>
+                        </div>
+                    </div>
+                    
+                    <div class="realization-item fade-in" data-category="batiment">
+                        <img src="https://images.unsplash.com/photo-1487956382158-bb926046304a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Bâtiment commercial">
+                        <div class="realization-overlay">
+                            <span class="realization-category">Bâtiment</span>
+                            <h3>Centre Commercial</h3>
+                            <p>Construction d'un centre commercial moderne à Goma</p>
+                        </div>
+                    </div>
+                    
+                    <div class="realization-item fade-in" data-category="autres">
+                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1769&q=80" alt="Route rurale">
+                        <div class="realization-overlay">
+                            <span class="realization-category">Infrastructure</span>
+                            <h3>Route Rurale</h3>
+                            <p>Construction d'une route d'accès en milieu rural</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="text-center">
+                <h2>Contactez-nous</h2>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Adresse Principale</h3>
+                            <p>5 Avenue BUSIMBA, Quartier MURARA<br>Commune de KARISIMBI, Ville de Goma<br>Province du Nord Kivu, RDC</p>
+                            <p><strong>Adresse Secondaire:</strong><br>25 Avenue Mahenge, Quartier Ndendere<br>Commune d'Ibanda, Ville de Bukavu</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Téléphones</h3>
+                            <p><strong>+243 991 577 790</strong><br>+243 816 007 640<br>+243 992 092 744<br>+243 828 181 992</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p><strong>scdcontact10@gmail.com</strong></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Heures d'Ouverture</h3>
+                            <p>Lundi - Vendredi: 8h00 - 17h00<br>Samedi: 8h00 - 13h00<br>Dimanche: Fermé</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in">
+                    <h3>Envoyez-nous un message</h3>
+                    <p>Remplissez ce formulaire pour nous contacter. Nous vous répondrons dans les plus brefs délais.</p>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nom complet *</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Adresse email *</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Numéro de téléphone</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Sujet *</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" class="form-control" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <a href="#" class="logo-container">
+                            <div class="logo-text">
+                                <div class="logo-main">SCD</div>
+                                <div class="logo-subtitle">SOCIETE DE CONSTRUCTION ET DEVELOPPEMENT <span class="logo-sarl">Sarl</span></div>
+                            </div>
+                        </a>
+                    </div>
+                    <p>Entreprise leader en construction, génie civil et développement d'infrastructures durables en République Démocratique du Congo, particulièrement dans les provinces du Nord et Sud Kivu.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Liens Rapides</h3>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#apropos">À Propos</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#realisations">Réalisations</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-services">
+                    <h3>Nos Services</h3>
+                    <ul>
+                        <li><a href="#services">Génie Civil & Bâtiment</a></li>
+                        <li><a href="#services">Infrastructures Routières</a></li>
+                        <li><a href="#services">Travaux Hydrauliques</a></li>
+                        <li><a href="#services">Transport & Logistique</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <p>Goma, Nord Kivu<br>République Démocratique du Congo</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <p>+243 991 577 790</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <p>scdcontact10@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 SOCIETE DE CONSTRUCTION ET DE DEVELOPPEMENT SARL. Tous droits réservés.</p>
+                <p>Registre de commerce: N°CD/GOM/RCC/22-B-01310 | Identification nationale: N° 19-F4200-N1 5003D | Enregistrement DGI: N°11/05001M/DGI/DIRAF/DIGR/IM/202</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+            
+            // Header shadow on scroll
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.08)';
+            }
+        });
+        
+        // Filter Realizations
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const realizationItems = document.querySelectorAll('.realization-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                realizationItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            
+            // In a real application, you would send this data to a server
+            // For this example, we'll show a styled alert
+            const alertDiv = document.createElement('div');
+            alertDiv.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: #10b981;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 10000;
+                font-weight: 600;
+                animation: slideIn 0.3s ease;
+            `;
+            
+            // Add keyframes for animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            alertDiv.innerHTML = `
+                <div style="display: flex; align-items: center;">
+                    <i class="fas fa-check-circle" style="margin-right: 10px; font-size: 1.2rem;"></i>
+                    <div>
+                        <strong>Message envoyé!</strong><br>
+                        Merci ${name}, nous vous répondrons bientôt.
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(alertDiv);
+            
+            // Remove alert after 5 seconds
+            setTimeout(() => {
+                alertDiv.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(alertDiv);
+                }, 300);
+            }, 5000);
+            
+            // Reset form
+            contactForm.reset();
+        });
+        
+        // Scroll Reveal Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            const revealPoint = 100;
+            
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', revealOnScroll);
+        // Initial check on page load
+        revealOnScroll();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 90,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Initialize with some elements revealed
+        window.addEventListener('load', () => {
+            // Reveal hero elements immediately
+            document.querySelectorAll('.hero .fade-in').forEach(el => {
+                el.classList.add('visible');
+            });
+            
+            // Add logo animation on load
+            const logoVisual = document.querySelector('.logo-visual');
+            logoVisual.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                logoVisual.style.transition = 'transform 0.5s ease';
+                logoVisual.style.transform = 'scale(1)';
+            }, 300);
+        });
+    </script>
+</body>
+</html>
